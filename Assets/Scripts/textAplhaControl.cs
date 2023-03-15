@@ -26,9 +26,9 @@ public class textAplhaControl : MonoBehaviour
     void Update()
     {
         
-        distBetweenObj = Vector3.Distance(transform.position, obj.transform.position);
+        Debug.Log(distBetweenObj = Vector3.Distance(transform.position, obj.transform.position));
 
-        if (distBetweenObj < 0.8 == true)
+        if (distBetweenObj < 3.5 == true)
         {
             text.faceColor = new Color32(255, 255, 255, 255);
         }

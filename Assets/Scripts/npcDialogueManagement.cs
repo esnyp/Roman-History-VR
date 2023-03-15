@@ -32,7 +32,7 @@ public class npcDialogueManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        alphaControl();
+      //  alphaControl();
     }
 
     void alphaControl()
