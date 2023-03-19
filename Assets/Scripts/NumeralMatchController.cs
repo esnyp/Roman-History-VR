@@ -27,10 +27,20 @@ public class NumeralMatchController : MonoBehaviour
        
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+      
+    }
+
+    void gameResolver(string randomBannerIntString,string selectedNumberString)
+    {
+
+    }
+
     void setTextValues()
     {
         int selectedNumber = Random.Range(1, 11);
-        string selectedNumberString = selectedNumber.ToString(); //need to convert to string so it works with dictionary        
+        string selectedNumberString = selectedNumber.ToString(); //1 these lines generate the random ints which will decide what number or numerals are selected
 
         int randomBannerInt = Random.Range(1, 4);
         string randomBannerIntString = randomBannerInt.ToString();  
@@ -42,13 +52,11 @@ public class NumeralMatchController : MonoBehaviour
         string ranWrongAnswer2String = ranWrongAnswer2.ToString();
 
         int ranWrongAnswer3 = getRandomInt(selectedNumber);
-        string ranWrongAnswer3String = ranWrongAnswer3.ToString();
+        string ranWrongAnswer3String = ranWrongAnswer3.ToString(); //1
 
-        Debug.Log(randomBannerIntString);
 
         number.text = selectedNumberString; // sets the random number to be equal to the text
 
-       
 
         switch (randomBannerIntString) //selects the text infront of a banner and sets it to the value of the keys for selectedNumber
         {
