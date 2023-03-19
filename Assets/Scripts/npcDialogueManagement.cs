@@ -18,8 +18,10 @@ public class npcDialogueManagement : MonoBehaviour
 
     private String speechGreeting = "Hail"; // Marcus
     private String speechLocation = "You're in Rome!"; // Marcus
-    private String speechTime = "The year is currently 44BC"; // Marcus
-    private String speechHowsLife = "Life for peasants in Rome was extremely difficult." + // Marcus
+
+
+    private String speechTime = "The year is currently 44BC"; // Titus
+    private String speechHowsLife = "Life for peasants in Rome was extremely difficult." + // Titus
         " Most of us worked as farmers, caring for crops and livestock." +
         " We also had to pay many taxes and provide free labor for construction projects.";
 
@@ -32,24 +34,10 @@ public class npcDialogueManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  alphaControl();
+       
     }
 
-    void alphaControl()
-    {
-        distToPlayer = Vector3.Distance(transform.position, playerObj.transform.position);  //measures the distance between two objs
-
-        if (distToPlayer < 3.5 == true)
-        {
-            NPCtext.faceColor = new Color32(255, 255, 255, 255);
-        }
-        else
-        {
-            NPCtext.faceColor = new Color32(255, 255, 255, 0);
-        }
-
-        // Debug.Log(distToPlayer);
-    }
+    
 
     public void dialogueManager(int dialogueID)
     {

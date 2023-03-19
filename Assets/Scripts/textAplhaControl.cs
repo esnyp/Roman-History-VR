@@ -10,7 +10,7 @@ public class textAplhaControl : MonoBehaviour
 
     public float distBetweenObj;
     public GameObject obj;
-    public TMP_Text text;
+    public Canvas canvas;
 
     private void Awake()
     {
@@ -25,16 +25,18 @@ public class textAplhaControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Debug.Log(distBetweenObj = Vector3.Distance(transform.position, obj.transform.position));
+
+        //  Debug.Log(distBetweenObj = Vector3.Distance(transform.position, obj.transform.position));
+
+        distBetweenObj = Vector3.Distance(obj.transform.position, canvas.transform.position);
 
         if (distBetweenObj < 3.5 == true)
         {
-            text.faceColor = new Color32(255, 255, 255, 255);
+            canvas.enabled = true;
         }
         else
         {
-            text.faceColor = new Color32(255, 255, 255, 0);
+            canvas.enabled = false;
         }                 
     }
 
