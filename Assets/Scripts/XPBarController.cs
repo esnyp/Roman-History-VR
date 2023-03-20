@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class XPBarController : MonoBehaviour
 
     public Slider slider;
     public ParticleSystem partSys;
+    public int playerLevel;
+    public TMP_Text levelText;
 
     private float tarProgress = 0;
 
@@ -15,12 +18,13 @@ public class XPBarController : MonoBehaviour
 
     private void Awake()
     {
-        
+        playerLevel = 1;
+        levelText.text = "Level: " + playerLevel;
     }
 
     void Start()
     {
-        ProgressUpdate(0.75f);
+        
     }
 
     // Update is called once per frame

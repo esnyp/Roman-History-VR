@@ -16,14 +16,16 @@ public class npcDialogueManagement : MonoBehaviour
 
     private int dialogueID;
 
-    private String speechGreeting = "Hail"; // Marcus
+    private String speechGreeting = "Hail"; // Marcus + Titus
     private String speechLocation = "You're in Rome!"; // Marcus
-
-
-    private String speechTime = "The year is currently 44BC"; // Titus
-    private String speechHowsLife = "Life for peasants in Rome was extremely difficult." + // Titus
+    private String speechTime = "The year is currently 44BC"; // Marcus
+    private String speechHowsLife = "Life for peasants in Rome was extremely difficult." + // Marcus
         " Most of us worked as farmers, caring for crops and livestock." +
         " We also had to pay many taxes and provide free labor for construction projects.";
+
+    private String speechQuest = "In Rome we use Roman numerals such as IV to represent the value 4 and XII to " +
+        "represent the value seven. I was trying to setup my market stand but accidently purchased these Arabic numerals! Can you" +
+        "help me convert them?";
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,11 @@ public class npcDialogueManagement : MonoBehaviour
                     Debug.Log(speechHowsLife);
                     NPCtext.text = speechHowsLife;
                     break;
+                case 5:
+                    Debug.Log(speechQuest);
+                    NPCtext.text = speechQuest;
+                    break;
+
                 default:
                     Debug.Log("Value is something else");
                     break;

@@ -26,6 +26,7 @@ public class voiceControlMaster : MonoBehaviour
         responses.Add("Where am I?", Location);
         responses.Add("What time is it?", Time);
         responses.Add("How is life?", HowsLife);
+        responses.Add("Do you need help converting these?", ConvertingQuest);
     }
 
     private void speechRecognised(PhraseRecognizedEventArgs speechDetected)
@@ -56,6 +57,12 @@ public class voiceControlMaster : MonoBehaviour
     {
         npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
         npcdialoguemanagement.dialogueManager(4);
+    }
+
+    private void ConvertingQuest()
+    {
+        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
+        npcdialoguemanagement.dialogueManager(5);
     }
 
 }

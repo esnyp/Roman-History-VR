@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
 public class NumeralMatchController : MonoBehaviour
@@ -15,6 +16,7 @@ public class NumeralMatchController : MonoBehaviour
     public TMP_Text numeral3;
     public numeralsGameManager numGameManager;
     public bool playerVictory;
+    public XPBarController XP;
 
     private Dictionary<string, string> numberKeyNumeralValue = new Dictionary<string, string>();
     private Dictionary<string, string> numeralKeyNumberValue = new Dictionary<string, string>();
@@ -52,27 +54,30 @@ public class NumeralMatchController : MonoBehaviour
 
         if(selectedBan == "banner1" && number.text == numeralKeyNumberValue[numeral1.text] && checker == 0)
         {
-            Debug.Log("Selected 1!");
+            Debug.Log("Player Won");
             checker++;
             playerVictory = true;
+            XP.ProgressUpdate(0.75f);
         }
         else if(selectedBan == "banner2" && number.text == numeralKeyNumberValue[numeral2.text] && checker == 0)
         {
-            Debug.Log("Selected 2!");
+            Debug.Log("Player Won");
             checker++;
             playerVictory = true;
+            XP.ProgressUpdate(0.75f);
         }
         else if(selectedBan == "banner3" && number.text == numeralKeyNumberValue[numeral3.text] && checker == 0)
         {
-            Debug.Log("Selected 3!");
+            Debug.Log("Player Won");
             checker++;
             playerVictory = true;
+            XP.ProgressUpdate(0.75f);
         }
         else if(checker == 0)
         {
-            Debug.Log("WRONG");
+            Debug.Log("Player Lost");
             checker++;
-            playerVictory = true;
+            playerVictory = false;
         }
     }    
 
