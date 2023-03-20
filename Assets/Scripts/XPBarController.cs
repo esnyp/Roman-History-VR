@@ -11,15 +11,16 @@ public class XPBarController : MonoBehaviour
     public ParticleSystem partSys;
     public int playerLevel;
     public TMP_Text levelText;
+    public int currentXP;
 
     private float tarProgress = 0;
+
 
     // Start is called before the first frame update
 
     private void Awake()
     {
-        playerLevel = 1;
-        levelText.text = "Level: " + playerLevel;
+        playerLevel = 1;     
     }
 
     void Start()
@@ -30,17 +31,18 @@ public class XPBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        levelText.text = "Level: " + playerLevel;
+
         if (slider.value < tarProgress)
         {
-            slider.value += 0.1f * Time.deltaTime;
-            if (!partSys.isPlaying)
-            {
-                partSys.Play();
-            }
+            slider.value += 0.5f * Time.deltaTime;           
         }
-        else
+        
+
+        if (slider.value == 1.0f)
         {
-            partSys.Stop();
+            slider.value = 0.0f;
+            playerLevel++;
         }
     }
 

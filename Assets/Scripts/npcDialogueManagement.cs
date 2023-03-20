@@ -12,10 +12,7 @@ public class npcDialogueManagement : MonoBehaviour
     public GameObject playerObj;
     public TMP_Text NPCtext;
 
-
-
     private int dialogueID;
-
     private String speechGreeting = "Hail"; // Marcus + Titus
     private String speechLocation = "You're in Rome!"; // Marcus
     private String speechTime = "The year is currently 44BC"; // Marcus
@@ -26,20 +23,7 @@ public class npcDialogueManagement : MonoBehaviour
     private String speechQuest = "In Rome we use Roman numerals such as IV to represent the value 4 and XII to " +
         "represent the value seven. I was trying to setup my market stand but accidently purchased these Arabic numerals! Can you" +
         "help me convert them?";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-    
+ 
 
     public void dialogueManager(int dialogueID)
     {

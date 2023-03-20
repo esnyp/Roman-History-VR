@@ -33,8 +33,7 @@ public class NumeralMatchController : MonoBehaviour
     void Start()
     {     
         addDictionary();
-        setTextValues();  
-        
+        setTextValues();        
     }
 
     // Update is called once per frame
@@ -57,21 +56,21 @@ public class NumeralMatchController : MonoBehaviour
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.75f);
+            XP.ProgressUpdate(0.65f);
         }
         else if(selectedBan == "banner2" && number.text == numeralKeyNumberValue[numeral2.text] && checker == 0)
         {
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.75f);
+            XP.ProgressUpdate(0.65f);
         }
         else if(selectedBan == "banner3" && number.text == numeralKeyNumberValue[numeral3.text] && checker == 0)
         {
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.75f);
+            XP.ProgressUpdate(0.65f);
         }
         else if(checker == 0)
         {

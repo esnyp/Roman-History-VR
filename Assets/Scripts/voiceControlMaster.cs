@@ -23,10 +23,10 @@ public class voiceControlMaster : MonoBehaviour
 
     private void responsesDeclaration() {
         responses.Add("Hello",Greeting);
-        responses.Add("Where am I?", Location);
-        responses.Add("What time is it?", Time);
-        responses.Add("How is life?", HowsLife);
-        responses.Add("Do you need help converting these?", ConvertingQuest);
+        responses.Add("Where am I", Location);
+        responses.Add("What time is it", Time);
+        responses.Add("How is life", HowsLife);
+        responses.Add("Do you need help converting these", ConvertingQuest);
     }
 
     private void speechRecognised(PhraseRecognizedEventArgs speechDetected)
