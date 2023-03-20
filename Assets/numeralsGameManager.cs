@@ -5,12 +5,14 @@ using UnityEngine.XR;
 
 public class numeralsGameManager : MonoBehaviour
 {
+    // this script checks what numeral the player selects, colours the banner, and then provides the value for NumeralMatchController
+
     public GameObject numeral1;
     public GameObject numeral2;
     public GameObject numeral3;
     public GameObject hand;
     public string selectedBanner;
-    public Material newMat;
+    public bool selectedBannerBool = false;
 
     private Renderer cubeRender1;
     private Renderer cubeRender2;
@@ -50,6 +52,7 @@ public class numeralsGameManager : MonoBehaviour
     void num1Selected()
     {
         selectedBanner = "banner1";
+        selectedBannerBool = true;
         cubeRender1.material.color = Color.green;
         enabled = false;
     }
@@ -57,12 +60,14 @@ public class numeralsGameManager : MonoBehaviour
     void num2Selected()
     {
         selectedBanner = "banner2";
+        selectedBannerBool = true;
         cubeRender2.material.color = Color.green;
         enabled = false;
     }
     void num3Selected()
     {
         selectedBanner = "banner3";
+        selectedBannerBool = true;
         cubeRender3.material.color = Color.green;
         enabled = false;
     }

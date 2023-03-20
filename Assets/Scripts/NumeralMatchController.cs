@@ -1,46 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI.Extensions;
 
 public class NumeralMatchController : MonoBehaviour
 {
+    // this script manages assigning values to text and figuring out if the user selected the correct answer
+
     public TMP_Text number;
     public TMP_Text numeral1;
     public TMP_Text numeral2;
     public TMP_Text numeral3;
+    public numeralsGameManager numGameManager;
+    public bool playerVictory;
 
     private Dictionary<string, string> numberKeyNumeralValue = new Dictionary<string, string>();
     private Dictionary<string, string> numeralKeyNumberValue = new Dictionary<string, string>();
-    
+    private string selectedBan;
+    private bool selectedBanBool;
+    private int selectedNumber;
+    private string selectedNumberString;
+    private int checker;
+   
+
+
+
     // Start is called before the first frame update
     void Start()
     {     
         addDictionary();
-        setTextValues();
+        setTextValues();  
         
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        selectedBan = numGameManager.selectedBanner;
+        selectedBanBool = numGameManager.selectedBannerBool;
+        if (!string.IsNullOrEmpty(selectedBan)){
+            gameResolver();
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-      
-    }
 
-    void gameResolver(string randomBannerIntString,string selectedNumberString)
-    {
+    void gameResolver()
+    {   
+        Debug.Log(checker);
 
-    }
+        if(selectedBan == "banner1" && number.text == numeralKeyNumberValue[numeral1.text] && checker == 0)
+        {
+            Debug.Log("Selected 1!");
+            checker++;
+            playerVictory = true;
+        }
+        else if(selectedBan == "banner2" && number.text == numeralKeyNumberValue[numeral2.text] && checker == 0)
+        {
+            Debug.Log("Selected 2!");
+            checker++;
+            playerVictory = true;
+        }
+        else if(selectedBan == "banner3" && number.text == numeralKeyNumberValue[numeral3.text] && checker == 0)
+        {
+            Debug.Log("Selected 3!");
+            checker++;
+            playerVictory = true;
+        }
+        else if(checker == 0)
+        {
+            Debug.Log("WRONG");
+            checker++;
+            playerVictory = true;
+        }
+    }    
 
     void setTextValues()
     {
-        int selectedNumber = Random.Range(1, 11);
-        string selectedNumberString = selectedNumber.ToString(); //1 these lines generate the random ints which will decide what number or numerals are selected
+        selectedNumber = Random.Range(1, 11);
+        selectedNumberString = selectedNumber.ToString(); //1 these lines generate the random ints which will decide what number or numerals are selected
 
         int randomBannerInt = Random.Range(1, 4);
         string randomBannerIntString = randomBannerInt.ToString();  
