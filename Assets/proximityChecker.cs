@@ -29,6 +29,6 @@ public class proximityChecker : MonoBehaviour
         npcDialogueManagement.enabled = true;
         voiceControlMaster.enabled = true;
     }
-        Debug.Log(dist);
+      //  Debug.Log(dist);
     }
 }
