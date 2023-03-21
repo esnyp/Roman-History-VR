@@ -5096,9 +5096,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5393182029384268659}
-  partSys: {fileID: 5393182028744688493}
   playerLevel: 0
   levelText: {fileID: 5393182028559325727}
+  currentXP: 0
 --- !u!1 &5393182029401198582
 GameObject:
   m_ObjectHideFlags: 0
