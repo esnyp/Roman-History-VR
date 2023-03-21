@@ -6,7 +6,8 @@ public class proximityChecker : MonoBehaviour
 {
     public GameObject player;
     public float dist;
-    
+    public npcDialogueManagement npcDialogueManagement;
+    public voiceControlMaster voiceControlMaster;
 
 
     // Start is called before the first frame update
@@ -19,6 +20,15 @@ public class proximityChecker : MonoBehaviour
     void Update()
     {
         dist = Vector3.Distance(transform.position, player.transform.position);
+        if (dist < 2.5f)
+        {
+            npcDialogueManagement.enabled = false;
+            voiceControlMaster.enabled = false;
+        }
+        else { 
+        npcDialogueManagement.enabled = true;
+        voiceControlMaster.enabled = true;
+    }
         Debug.Log(dist);
     }
 }

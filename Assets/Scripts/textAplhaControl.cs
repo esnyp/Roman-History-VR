@@ -30,7 +30,7 @@ public class textAplhaControl : MonoBehaviour
 
         distBetweenObj = Vector3.Distance(obj.transform.position, canvas.transform.position);
 
-        if (distBetweenObj < 2.5 == true)
+        if (distBetweenObj < 5 == true)
         {
             canvas.enabled = true;
         }

@@ -4,7 +4,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
 
 public class NumeralMatchController : MonoBehaviour
 {
@@ -56,21 +55,21 @@ public class NumeralMatchController : MonoBehaviour
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.65f);
+            XP.ProgressUpdate(200.0f);
         }
         else if(selectedBan == "banner2" && number.text == numeralKeyNumberValue[numeral2.text] && checker == 0)
         {
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.65f);
+            XP.ProgressUpdate(200.0f);
         }
         else if(selectedBan == "banner3" && number.text == numeralKeyNumberValue[numeral3.text] && checker == 0)
         {
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(0.65f);
+            XP.ProgressUpdate(200.0f);
         }
         else if(checker == 0)
         {
