@@ -54873,6 +54873,7 @@ MonoBehaviour:
   templeCollider: {fileID: 1910868576}
   marketCollider: {fileID: 1421593892}
   player: {fileID: 666604223}
+  notificationManager: {fileID: 633556488}
   achievementTitle: {fileID: 1591946092}
   subAchievement0: {fileID: 906241388}
   subAchievement1: {fileID: 1322978563}

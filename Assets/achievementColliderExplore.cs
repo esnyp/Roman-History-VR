@@ -11,6 +11,7 @@ public class achievementColliderExplore : MonoBehaviour
     public GameObject templeCollider;
     public GameObject marketCollider;
     public GameObject player;
+    public GameObject notificationManager;
     public TMP_Text achievementTitle;
     public TMP_Text subAchievement0;
     public TMP_Text subAchievement1;
@@ -20,10 +21,13 @@ public class achievementColliderExplore : MonoBehaviour
     public int houseC = 0;
     public bool achievementAchieved = false;
 
+    private notificationController notificationcontroller;
+
+
     // Start is called before the first frame update
     void Start()
-    {       
-        
+    {
+        notificationcontroller = notificationManager.GetComponent<notificationController>();
     }
 
     // Update is called once per frame
@@ -37,7 +41,7 @@ public class achievementColliderExplore : MonoBehaviour
     {
         if(templeC + marketC + houseC == 3)
         {
-            Debug.Log("achieved");
+            notificationcontroller.sendNotification("You've completed the achievement | Explore Caerulia |");
             achievementAchieved = true;
             achievementTitle.color = Color.green;
             achievementTitle.text = "Explore Caerulia (complete)";
