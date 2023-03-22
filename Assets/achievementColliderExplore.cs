@@ -11,11 +11,14 @@ public class achievementColliderExplore : MonoBehaviour
     public GameObject templeCollider;
     public GameObject marketCollider;
     public GameObject player;
+    public TMP_Text achievementTitle;
     public TMP_Text subAchievement0;
     public TMP_Text subAchievement1;
     public TMP_Text subAchievement2;
     public int templeC = 0;
     public int marketC = 0;
+    public int houseC = 0;
+    public bool achievementAchieved = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +35,12 @@ public class achievementColliderExplore : MonoBehaviour
 
     public void awardAchievement()
     {
-        if(templeC + marketC == 2)
+        if(templeC + marketC + houseC == 3)
         {
-       //     Debug.Log("achieved");
-        }
-        else
-        {
-       //     Debug.Log("not achieved");
+            Debug.Log("achieved");
+            achievementAchieved = true;
+            achievementTitle.color = Color.green;
+            achievementTitle.text = "Explore Caerulia (complete)";
         }
     }
 
@@ -53,6 +55,11 @@ public class achievementColliderExplore : MonoBehaviour
         {
             subAchievement1.text = "Explore the Market (comeplete)";
             subAchievement1.color = Color.green;
+        }
+        if (houseC == 1)
+        {
+            subAchievement2.text = "Explore a house (comeplete)";
+            subAchievement2.color = Color.green;
         }
     }
 
