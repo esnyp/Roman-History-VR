@@ -6,13 +6,16 @@ public class achievementColliderExploreHouse : MonoBehaviour
 {
     public GameObject player;
     public GameObject achievementManager;
-    private achievementColliderExplore achievementcoliderexplore;
+    public GameObject notificationManager;
 
+    private achievementColliderExplore achievementcoliderexplore;
+    private notificationController notificationcontroller;
 
     // Start is called before the first frame update
     void Start()
     {
         achievementcoliderexplore = achievementManager.GetComponent<achievementColliderExplore>();
+        notificationcontroller = notificationManager.GetComponent<notificationController>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class achievementColliderExploreHouse : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            notificationcontroller.sendNotification("Titus's House");
             achievementcoliderexplore.houseC = 1;
         }
     }
