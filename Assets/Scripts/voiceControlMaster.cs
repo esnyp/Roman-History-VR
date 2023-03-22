@@ -11,7 +11,10 @@ public class voiceControlMaster : MonoBehaviour
 {
     private KeywordRecognizer recog;
     private Dictionary<string, Action> responses = new Dictionary<string, Action>();
+
+    public GameObject player;
     public GameObject NPC;
+    public float dist;
 
     private void Start()
     {
@@ -19,6 +22,21 @@ public class voiceControlMaster : MonoBehaviour
         recog = new KeywordRecognizer(responses.Keys.ToArray());
         recog.OnPhraseRecognized += speechRecognised;
         recog.Start();       
+    }
+
+    private void Update()
+    {
+       dist = Vector3.Distance(player.transform.position, NPC.transform.position);
+        
+        if(dist > 3)
+        {
+            recog.Stop();
+        }
+        else
+        {
+            recog.Start();
+        }
+        
     }
 
     private void responsesDeclaration() {

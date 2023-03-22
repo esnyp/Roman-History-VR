@@ -23,7 +23,7 @@ public class menuCanvasController : MonoBehaviour
         
     }
 
-    public void OnButtonClick()
+    public void OnButtonClickSettings()
     {
         heading.text = "Settings";
         settingsCanvas.gameObject.SetActive(true);

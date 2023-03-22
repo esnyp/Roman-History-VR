@@ -9,7 +9,8 @@ public class textAplhaControl : MonoBehaviour
     // Start is called before the first frame update
 
     public float distBetweenObj;
-    public GameObject obj;
+    public GameObject player;
+    public GameObject NPC;
     public Canvas canvas;
 
     private void Awake()
@@ -28,9 +29,9 @@ public class textAplhaControl : MonoBehaviour
 
         //  Debug.Log(distBetweenObj = Vector3.Distance(transform.position, obj.transform.position));
 
-        distBetweenObj = Vector3.Distance(obj.transform.position, canvas.transform.position);
+        distBetweenObj = Vector3.Distance(player.transform.position, NPC.transform.position);
 
-        if (distBetweenObj < 5 == true)
+        if (distBetweenObj < 3 == true)
         {
             canvas.enabled = true;
         }
