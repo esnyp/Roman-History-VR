@@ -20,8 +20,10 @@ public class achievementColliderExplore : MonoBehaviour
     public int marketC = 0;
     public int houseC = 0;
     public bool achievementAchieved = false;
+    public XPBarController XP;
 
     private notificationController notificationcontroller;
+    private bool rewardedXP = false;
 
 
     // Start is called before the first frame update
@@ -33,11 +35,11 @@ public class achievementColliderExplore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        awardAchievement();
-        awardSubAchievement();
+        awardAchievementExplore();
+        awardSubAchievementExplore();
     }
 
-    public void awardAchievement()
+    public void awardAchievementExplore()
     {
         if(templeC + marketC + houseC == 3)
         {
@@ -45,10 +47,15 @@ public class achievementColliderExplore : MonoBehaviour
             achievementAchieved = true;
             achievementTitle.color = Color.green;
             achievementTitle.text = "Explore Caerulia (complete)";
+            if (rewardedXP == false)
+            {
+                XP.ProgressUpdate(200.0f);
+                rewardedXP = true;
+            }
         }
     }
 
-    public void awardSubAchievement()
+    public void awardSubAchievementExplore()
     {
         if(templeC == 1)
         {

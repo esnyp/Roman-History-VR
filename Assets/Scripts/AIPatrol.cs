@@ -7,8 +7,8 @@ public class AIPatrol : MonoBehaviour
 
     public Transform[] waypoints; // stores the waypoints in an array
     public int speed;
-    public float freezeTime = 8f; // controls how long the npc will wait
-    public GameObject crate;
+  //  public float freezeTime = 8f; // controls how long the npc will wait
+  //  public GameObject crate;
 
     private int wayPointIndex; // current waypoint ai is pathing to
     private float dist;
@@ -25,11 +25,11 @@ public class AIPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (reachedWaypoint == true)
-        {
-            StartCoroutine(patrolFreezer(freezeTime));
-            return;          
-        }
+      //  if (reachedWaypoint == true)
+       // {
+       //     StartCoroutine(patrolFreezer(freezeTime));
+        //    return;          
+       // }
 
 
         dist = Vector3.Distance(transform.position, waypoints[wayPointIndex].position); // checks distance between currently stored waypoint and ai.
@@ -58,11 +58,11 @@ public class AIPatrol : MonoBehaviour
 
         transform.LookAt(waypoints[wayPointIndex].position);
         
-        if(wayPointIndex == 5)
-        {
-            Debug.Log("At point 5");         
-            reachedWaypoint = true;
-        }
+       // if(wayPointIndex == 5)
+      //  {
+         //   Debug.Log("At point 5");         
+        //    reachedWaypoint = true;
+       // }
 
     }
 

@@ -11,24 +11,31 @@ public class voiceControlMaster : MonoBehaviour
 {
     private KeywordRecognizer recog;
     private Dictionary<string, Action> responses = new Dictionary<string, Action>();
+    private string selectedNPC;
 
+    public GameObject questManager;
     public GameObject player;
-    public GameObject NPC;
-    public float dist;
+    public GameObject marcusNPC;
+    public GameObject titusNPC;
+    public float distMarcus;
+    public float distTitus;
 
     private void Start()
     {
         responsesDeclaration(); //adds all voice commands
         recog = new KeywordRecognizer(responses.Keys.ToArray());
         recog.OnPhraseRecognized += speechRecognised;
-        recog.Start();       
+        recog.Start();  
+        
+
     }
 
     private void Update()
     {
-       dist = Vector3.Distance(player.transform.position, NPC.transform.position);
-        
-        if(dist > 3)
+       distMarcus = Vector3.Distance(player.transform.position, marcusNPC.transform.position);
+       distTitus = Vector3.Distance(player.transform.position, titusNPC.transform.position); 
+
+        if(distMarcus > 3 && distTitus > 3) //checks if range of any npcs to see if you need to listen for speech
         {
             recog.Stop();
         }
@@ -36,8 +43,36 @@ public class voiceControlMaster : MonoBehaviour
         {
             recog.Start();
         }
-        
-    }
+
+        if(distMarcus < 3)
+        {
+            selectedNPC = "marcusSelected";
+        }
+        else if(distTitus < 3)
+        {
+            selectedNPC = "titusSelected";
+        }
+        else if (distTitus < 3)
+        {
+            selectedNPC = "celiaSelected";
+        }
+
+        switch (selectedNPC) // resolved which npc the user is close to
+        {
+            case "marcusSelected":
+              //  Debug.Log("Marcus Selected");
+                break;
+
+            case "titusSelected":
+              //  Debug.Log("Titus Selected");
+                break;
+            default:
+               // Debug.Log("Value is something else");
+                break;
+        }
+
+
+        }
 
     private void responsesDeclaration() {
         responses.Add("Hello",Greeting);
@@ -45,6 +80,8 @@ public class voiceControlMaster : MonoBehaviour
         responses.Add("What time is it", Time);
         responses.Add("How is life", HowsLife);
         responses.Add("Do you need help converting these", ConvertingQuest);
+        responses.Add("Do you need help?", keyQuest);
+        responses.Add("Where could it be?", keyQuestAdd);
     }
 
     private void speechRecognised(PhraseRecognizedEventArgs speechDetected)
@@ -55,32 +92,75 @@ public class voiceControlMaster : MonoBehaviour
 
     private void Greeting()
     {
-        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
-        npcdialoguemanagement.dialogueManager(1);        
+        if(selectedNPC == "marcusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementMarcus = marcusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementMarcus.dialogueManager(1);
+        }
+        else if(selectedNPC == "titusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementTitus.dialogueManager(7);
+        }
+      
     }
 
     private void Location()
     {
-        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
-        npcdialoguemanagement.dialogueManager(2);
+        if (selectedNPC == "marcusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagement = marcusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagement.dialogueManager(2);
+        }
     }
 
     private void Time()
     {
-        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
-        npcdialoguemanagement.dialogueManager(3);
+        if (selectedNPC == "marcusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagement = marcusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagement.dialogueManager(3);
+        }
     }
 
     private void HowsLife()
     {
-        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
-        npcdialoguemanagement.dialogueManager(4);
+        if (selectedNPC == "marcusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagement = marcusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagement.dialogueManager(4);
+        }
     }
 
     private void ConvertingQuest()
     {
-        npcDialogueManagement npcdialoguemanagement = NPC.GetComponent<npcDialogueManagement>();
-        npcdialoguemanagement.dialogueManager(5);
+        if (selectedNPC == "titusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementTitus.dialogueManager(5);
+        }
     }
 
+    private void keyQuest()
+    {
+        if (selectedNPC == "titusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
+            questManager questMan = questManager.GetComponent<questManager>();
+
+            questMan.questResolver(1);
+            npcdialoguemanagementTitus.dialogueManager(8);
+        }
+    }
+
+    private void keyQuestAdd()
+    {
+        if (selectedNPC == "titusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
+            questManager questMan = questManager.GetComponent<questManager>();
+        
+            npcdialoguemanagementTitus.dialogueManager(9);
+        }
+    }
 }
