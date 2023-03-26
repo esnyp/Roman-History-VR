@@ -8,10 +8,12 @@ using UnityEngine.UIElements.Experimental;
 
 public class menuCanvasController : MonoBehaviour
 {
+    public GameObject buttonsParent;
     public Canvas settingsCanvas;
     public Button settingsButton;
     public Canvas achievementsCanvas;
     public Button achievementsButton;
+    public Canvas questsCanvas;
     public TMP_Text heading;
     // Start is called before the first frame update
     void Start()
@@ -29,17 +31,24 @@ public class menuCanvasController : MonoBehaviour
     {
         heading.text = "Settings";
         settingsCanvas.gameObject.SetActive(true);
-        settingsButton.gameObject.SetActive(false);
         achievementsCanvas.gameObject.SetActive(false);
-        achievementsButton.gameObject.SetActive(false);
+        buttonsParent.gameObject.SetActive(false);
     }
 
     public void OnButtonClickAchievements()
     {
         heading.text = "Achievements";
         settingsCanvas.gameObject.SetActive(false);
-        settingsButton.gameObject.SetActive(false);
         achievementsCanvas.gameObject.SetActive(true);
-        achievementsButton.gameObject.SetActive(false);
+        buttonsParent.gameObject.SetActive(false);
+    }
+
+    public void OnButtonClickQuests()
+    {
+        heading.text = "Quests";
+        settingsCanvas.gameObject.SetActive(false);
+        achievementsCanvas.gameObject.SetActive(false);
+        questsCanvas.gameObject.SetActive(true);
+        buttonsParent.gameObject.SetActive(false);
     }
 }
