@@ -15,6 +15,8 @@ public class menuCanvasController : MonoBehaviour
     public Button achievementsButton;
     public Canvas questsCanvas;
     public TMP_Text heading;
+
+  //  public GameObject questManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +52,11 @@ public class menuCanvasController : MonoBehaviour
         achievementsCanvas.gameObject.SetActive(false);
         questsCanvas.gameObject.SetActive(true);
         buttonsParent.gameObject.SetActive(false);
+    }
+
+    public void OnClickTest()
+    {
+  //      questManager questMan = questManager.GetComponent<questManager>();
+ //       questMan.questCompleter(1);
     }
 }

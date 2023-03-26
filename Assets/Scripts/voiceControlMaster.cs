@@ -13,12 +13,17 @@ public class voiceControlMaster : MonoBehaviour
     private Dictionary<string, Action> responses = new Dictionary<string, Action>();
     private string selectedNPC;
 
+
+
     public GameObject questManager;
     public GameObject player;
+
     public GameObject marcusNPC;
     public GameObject titusNPC;
+    public GameObject celiaNPC;
     public float distMarcus;
     public float distTitus;
+    public float distCelia;
 
     private void Start()
     {
@@ -33,9 +38,10 @@ public class voiceControlMaster : MonoBehaviour
     private void Update()
     {
        distMarcus = Vector3.Distance(player.transform.position, marcusNPC.transform.position);
-       distTitus = Vector3.Distance(player.transform.position, titusNPC.transform.position); 
+       distTitus = Vector3.Distance(player.transform.position, titusNPC.transform.position);
+       distCelia = Vector3.Distance(player.transform.position, celiaNPC.transform.position);
 
-        if(distMarcus > 3 && distTitus > 3) //checks if range of any npcs to see if you need to listen for speech
+        if (distMarcus > 3 && distTitus > 3 && distCelia > 3) //checks if range of any npcs to see if you need to listen for speech
         {
             recog.Stop();
         }
@@ -44,15 +50,15 @@ public class voiceControlMaster : MonoBehaviour
             recog.Start();
         }
 
-        if(distMarcus < 3)
+        if (distMarcus < 3)
         {
             selectedNPC = "marcusSelected";
         }
-        else if(distTitus < 3)
+        else if (distTitus < 3)
         {
             selectedNPC = "titusSelected";
         }
-        else if (distTitus < 3)
+        else if (distCelia < 3)
         {
             selectedNPC = "celiaSelected";
         }
@@ -60,14 +66,17 @@ public class voiceControlMaster : MonoBehaviour
         switch (selectedNPC) // resolved which npc the user is close to
         {
             case "marcusSelected":
-              //  Debug.Log("Marcus Selected");
+               Debug.Log("Marcus Selected");
                 break;
 
             case "titusSelected":
-              //  Debug.Log("Titus Selected");
+                Debug.Log("Titus Selected");
+                break;
+            case "celiaSelected":
+                Debug.Log("celiaSelected");
                 break;
             default:
-               // Debug.Log("Value is something else");
+                Debug.Log("Value is something else");
                 break;
         }
 
@@ -102,7 +111,12 @@ public class voiceControlMaster : MonoBehaviour
             npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
             npcdialoguemanagementTitus.dialogueManager(7);
         }
-      
+        else if (selectedNPC == "celiaSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementCelia = celiaNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementCelia.dialogueManager(10);
+        }
+
     }
 
     private void Location()
@@ -134,10 +148,13 @@ public class voiceControlMaster : MonoBehaviour
 
     private void ConvertingQuest()
     {
-        if (selectedNPC == "titusSelected")
+        if (selectedNPC == "celiaSelected")
         {
-            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
-            npcdialoguemanagementTitus.dialogueManager(5);
+            npcDialogueManagement npcdialoguemanagementCelia = celiaNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementCelia.dialogueManager(11);
+
+            questManager questMan = questManager.GetComponent<questManager>();
+            questMan.questResolver(2);
         }
     }
 

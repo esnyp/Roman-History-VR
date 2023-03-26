@@ -8,25 +8,27 @@ using static UnityEngine.InputManagerEntry;
 
 public class questManager : MonoBehaviour
 {
+    public XPBarController XP;
+
     public TMP_Text questTextHUD;
     public TMP_Text extraDialogue;
     public int currentQuestID;
     //
     public TMP_Text questSlot1Title;
     public TMP_Text questSlot1Desc;
-    public bool questSlot1OnQuest;
+    public int questSlot1ID;
     //
     public TMP_Text questSlot2Title;
     public TMP_Text questSlot2Desc;
-    public bool questSlot2OnQuest;
+    public int questSlot2ID;
     //
     public TMP_Text questSlot3Title;
     public TMP_Text questSlot3Desc;
-    public bool questSlot3OnQuest;
+    public int questSlot3ID;
     //
     public TMP_Text questSlot4Title;
     public TMP_Text questSlot4Desc;
-    public bool questSlot4OnQuest;
+    public int questSlot4ID;
 
     // Quest Descriptions
 
@@ -42,26 +44,28 @@ public class questManager : MonoBehaviour
     private string quest3Title = "Investigate the disturbance in the forest!";
     private string quest3Desc = "Lucius heard a loud noise in the forest. Go and check it out!";
 
-    private int quest4ID;
-    private string quest4Title;
-    private string quest4Desc;
-
+    private int quest4ID = 4;
+    private string quest4Title = "#placeholder";
+    private string quest4Desc = "#placeholder desc";
+    public Dictionary<int, questData> dictionaryQuests = new Dictionary<int, questData>();
 
     // Start is called before the first frame update
     void Start()
     {
         extraDialogue.enabled = false;
-        Dictionary<int, questData> dictionaryQuests = new Dictionary<int, questData>();
 
-        dictionaryQuests.Add(1, new questData { questID = quest1ID, questTitle = quest1Title, questDesc = quest1Desc });
 
-      
+        dictionaryQuests.Add(1, new questData { questID = quest1ID, questTitle = quest1Title, questDesc = quest1Desc, questCompleted = false });
+        dictionaryQuests.Add(2, new questData { questID = quest2ID, questTitle = quest2Title, questDesc = quest2Desc, questCompleted = false });
+        dictionaryQuests.Add(3, new questData { questID = quest3ID, questTitle = quest3Title, questDesc = quest3Desc, questCompleted = false });
+        dictionaryQuests.Add(4, new questData { questID = quest4ID, questTitle = quest4Title, questDesc = quest4Desc, questCompleted = false });
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(dictionaryQuests[1].questCompleted);
     }
 
     public struct questData
@@ -69,6 +73,7 @@ public class questManager : MonoBehaviour
         public int questID;
         public string questTitle;
         public string questDesc;
+        public bool questCompleted;
     }
 
     public void questResolver(int id) // assigns the current quest ID and calls the method to change the quesdt canvas text
@@ -94,21 +99,24 @@ public class questManager : MonoBehaviour
         switch (id)
         {
             case 1:
-                if (!questTextHUD.text.Contains("Find Titus's key!"))
-                {
-                    questTextHUD.text += " Find Titus's key!";                    
-                }            
-                extraDialogue.enabled = true;
-                Debug.Log(questTextHUD.text.Contains("Find"));
+                    updateQuestHUD(id);
+                    assignQuestLog(id);                          
+                extraDialogue.enabled = true;              
                 break;
             case 2:
-                questTextHUD.text += " Help convert the numerals!";
-                Debug.Log("quest accepted" + id);
+                   updateQuestHUD(id);
+                   assignQuestLog(id);
                 break;
+
             default:
                 Debug.Log("No ID");
                 break;
         }
+    }
+
+    public void updateQuestHUD(int id)
+    {
+        questTextHUD.text = dictionaryQuests[id].questTitle; ;
     }
 
 
@@ -116,30 +124,61 @@ public class questManager : MonoBehaviour
     {
         if (questSlot1Title.text.Length == 0)
         {
-            questSlot1Title.text = "Find Titus's key!";
-            questSlot1Desc.text = quest1Desc;
-            questSlot1OnQuest = true;
+            questSlot1Title.text = dictionaryQuests[id].questTitle;
+            questSlot1Desc.text = dictionaryQuests[id].questDesc;
+            questSlot1ID = id;
         }
 
         else if (questSlot2Title.text.Length == 0)
         {
-            questSlot2Title.text = "Find Titus's key!";
-            questSlot2Desc.text = quest1Desc;
-            questSlot2OnQuest = true;
+            questSlot2Title.text = dictionaryQuests[id].questTitle;
+            questSlot2Desc.text = dictionaryQuests[id].questDesc;
+            questSlot2ID = id;
         }
 
         else if (questSlot3Title.text.Length == 0)
         {
-            questSlot3Title.text = "Find Titus's key!";
-            questSlot3Desc.text = quest1Desc;
-            questSlot3OnQuest = true;
+            questSlot3Title.text = dictionaryQuests[id].questTitle;
+            questSlot3Desc.text = dictionaryQuests[id].questDesc;
+            questSlot3ID = id;
         }
 
         else if (questSlot4Title.text.Length == 0)
         {
-            questSlot4Title.text = "Find Titus's key!";
-            questSlot4Desc.text = quest1Desc;
-            questSlot4OnQuest = true;
+            questSlot4Title.text = dictionaryQuests[id].questTitle;
+            questSlot4Desc.text = dictionaryQuests[id].questDesc;
+            questSlot3ID = id;
+        }
+        else
+        {
+            Debug.Log("Quest log full");
+        }
+    }
+
+    public void questCompleter(int id)
+    {
+        dictionaryQuests[id] = new questData { questID = id, questTitle = dictionaryQuests[id].questTitle, questDesc = dictionaryQuests[id].questDesc, questCompleted = true };
+        XP.ProgressUpdate(200.0f);
+
+        if (questSlot1ID == id)
+        {
+            questSlot1Title.color = Color.green;
+            questSlot1Desc.color = Color.green;
+        }
+        else if(questSlot2ID == id)
+        {
+            questSlot2Title.color = Color.green;
+            questSlot2Desc.color = Color.green;
+        }
+        else if (questSlot3ID == id)
+        {
+            questSlot3Title.color = Color.green;
+            questSlot3Desc.color = Color.green;
+        }
+        else if (questSlot4ID == id)
+        {
+            questSlot4Title.color = Color.green;
+            questSlot4Desc.color = Color.green;
         }
     }
 }

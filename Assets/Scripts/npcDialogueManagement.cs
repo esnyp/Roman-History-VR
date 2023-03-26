@@ -27,6 +27,10 @@ public class npcDialogueManagement : MonoBehaviour
     private String speechGreetingTitus = "Hail, I am Titus";
     private String speechKeyTitus = "(QUEST) I'm stuck out here because I lost the key to my home! Can you help me find it?";
     private String speechKeyTitusAdd = "(QUEST) I was at the market earlier so I'd start there!";
+    private String speechGreetingCelia = "Hail, I am Celia";
+    private String speechConvertCelia = "(QUEST) I purchased these banners for my market stand but they're using arabic numerals! " +
+        "Merchants generally use Roman numerals and I don't understsand these arabic ones. Can you help convert these for me?";
+    private String speechTipCelia = "Hmm, I think I remember Titus getting water from the well. Maybe he dropped his key near it?";
 
 
     public void dialogueManager(int dialogueID)
@@ -68,6 +72,20 @@ public class npcDialogueManagement : MonoBehaviour
                     Debug.Log(speechKeyTitusAdd);
                     NPCtext.text = speechKeyTitusAdd;
                     break;
+                case 10:
+                    Debug.Log(speechGreetingCelia);
+                    NPCtext.text = speechGreetingCelia;
+                    break;
+                case 11:
+                    Debug.Log(speechConvertCelia);
+                    NPCtext.text = speechConvertCelia;
+                    break;
+                case 12:
+                    Debug.Log(speechTipCelia);
+                    NPCtext.text = speechTipCelia;
+                    break;
+
+
                 default:
                     Debug.Log("Value is something else");
                     break;

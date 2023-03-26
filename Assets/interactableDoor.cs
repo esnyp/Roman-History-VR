@@ -7,6 +7,7 @@ public class interactableDoor : MonoBehaviour
 {
     public GameObject key;
     public GameObject door;
+    public GameObject questManager;
 
     private float tarRotate = 270.0f;
     private bool doorOpen = false;
@@ -20,6 +21,9 @@ public class interactableDoor : MonoBehaviour
         {
             door.transform.Rotate(0, tarRotate, 0, Space.World);
             doorOpen = true;
+
+            questManager questMan = questManager.GetComponent<questManager>();
+            questMan.questCompleter(1);
         }
         else
         {
