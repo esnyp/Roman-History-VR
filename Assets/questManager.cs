@@ -117,7 +117,7 @@ public class questManager : MonoBehaviour
 
     public void updateQuestHUD(int id)
     {
-        questTextHUD.text = dictionaryQuests[id].questTitle; ;
+       questTextHUD.text = "Quests: " + dictionaryQuests[id].questTitle;
     }
 
 
