@@ -6,7 +6,7 @@ public class AIPatrol : MonoBehaviour
 {
 
     public Transform[] waypoints; // stores the waypoints in an array
-    public int speed;
+    public float speed;
   //  public float freezeTime = 8f; // controls how long the npc will wait
   //  public GameObject crate;
 
@@ -53,6 +53,7 @@ public class AIPatrol : MonoBehaviour
         if(wayPointIndex >= waypoints.Length)
             {
             wayPointIndex = 0;
+            enabled = false;
             }
 
 

@@ -10,6 +10,8 @@ public class questManager : MonoBehaviour
 {
     public XPBarController XP;
 
+    
+
     public TMP_Text questTextHUD;
     public TMP_Text extraDialogue;
     public int currentQuestID;
@@ -34,7 +36,7 @@ public class questManager : MonoBehaviour
 
     private int quest1ID = 1;
     private string quest1Title = "Find Titus's key!";
-    private string quest1Desc = "Titus lost his key so now he's stuck outside. He recommended you start searching around the market since thats where he last was";
+    private string quest1Desc = "Titus lost his key so now he's stuck outside. He recommended you start searching around the market since thats where he last was. Once you find the key return it to Titus.";
 
     private int quest2ID = 2;
     private string quest2Title = "Convert the Numerals!";
@@ -65,7 +67,7 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(dictionaryQuests[1].questCompleted);
+        
     }
 
     public struct questData
@@ -90,7 +92,6 @@ public class questManager : MonoBehaviour
             default:
                 Debug.Log("No ID");
                 break;
-
         }  
     }
 
