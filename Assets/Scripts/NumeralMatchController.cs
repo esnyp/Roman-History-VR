@@ -16,6 +16,7 @@ public class NumeralMatchController : MonoBehaviour
     public numeralsGameManager numGameManager;
     public bool playerVictory;
     public XPBarController XP;
+    public numeralGameSuperManager numGameSupMan;
 
     private Dictionary<string, string> numberKeyNumeralValue = new Dictionary<string, string>();
     private Dictionary<string, string> numeralKeyNumberValue = new Dictionary<string, string>();
@@ -30,7 +31,8 @@ public class NumeralMatchController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {     
+    {  
+        
         addDictionary();
         setTextValues();        
     }
@@ -48,28 +50,29 @@ public class NumeralMatchController : MonoBehaviour
 
     void gameResolver()
     {   
-        Debug.Log(checker);
+       // Debug.Log(checker);
 
         if(selectedBan == "banner1" && number.text == numeralKeyNumberValue[numeral1.text] && checker == 0)
         {
+            numGameSupMan.numeralGameChecker++;
             Debug.Log("Player Won");
             checker++;
-            playerVictory = true;
-            XP.ProgressUpdate(200.0f);
+            playerVictory = true;        
         }
         else if(selectedBan == "banner2" && number.text == numeralKeyNumberValue[numeral2.text] && checker == 0)
         {
+            numGameSupMan.numeralGameChecker++;
             Debug.Log("Player Won");
             checker++;
-            playerVictory = true;
-            XP.ProgressUpdate(200.0f);
+            playerVictory = true;          
         }
         else if(selectedBan == "banner3" && number.text == numeralKeyNumberValue[numeral3.text] && checker == 0)
         {
+            numGameSupMan.numeralGameChecker++;
             Debug.Log("Player Won");
             checker++;
             playerVictory = true;
-            XP.ProgressUpdate(200.0f);
+
         }
         else if(checker == 0)
         {
