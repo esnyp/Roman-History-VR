@@ -13,7 +13,9 @@ public class voiceControlMaster : MonoBehaviour
     private Dictionary<string, Action> responses = new Dictionary<string, Action>();
     private string selectedNPC;
 
-
+    public numeralsGameManager numGame1; // access numeral game to enable them after activating
+    public numeralsGameManager numGame2;
+    public numeralsGameManager numGame3;
 
     public GameObject questManager;
     public GameObject player;
@@ -150,6 +152,10 @@ public class voiceControlMaster : MonoBehaviour
     {
         if (selectedNPC == "celiaSelected")
         {
+            numGame1.enabled = true;
+            numGame2.enabled = true;
+            numGame3.enabled = true;
+
             npcDialogueManagement npcdialoguemanagementCelia = celiaNPC.GetComponent<npcDialogueManagement>();
             npcdialoguemanagementCelia.dialogueManager(11);
 

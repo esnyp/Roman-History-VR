@@ -10,7 +10,9 @@ public class questManager : MonoBehaviour
 {
     public XPBarController XP;
 
-    
+    public numeralsGameManager numGame1;
+    public numeralsGameManager numGame2;
+    public numeralsGameManager numGame3;
 
     public TMP_Text questTextHUD;
     public TMP_Text extraDialogue;
