@@ -4,18 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
+
 
 public class questManager : MonoBehaviour
 {
     public XPBarController XP;
 
-    public numeralsGameManager numGame1;
-    public numeralsGameManager numGame2;
-    public numeralsGameManager numGame3;
-
+  
     public TMP_Text questTextHUD;
-    public TMP_Text extraDialogue;
+    public TMP_Text extraDialogueTitus;
+    public TMP_Text extraDialogueCelia;
     public int currentQuestID;
     //
     public TMP_Text questSlot1Title;
@@ -45,8 +43,8 @@ public class questManager : MonoBehaviour
     private string quest2Desc = "Celia purchased the wrong banners. Help her convert the arabic numerals into Roman ones!";
 
     private int quest3ID = 3;
-    private string quest3Title = "Investigate the disturbance in the forest!";
-    private string quest3Desc = "Lucius heard a loud noise in the forest. Go and check it out!";
+    private string quest3Title = "Help the census assistant answer the questions";
+    private string quest3Desc = "The census assistant needs help answering these questions ";
 
     private int quest4ID = 4;
     private string quest4Title = "#placeholder";
@@ -56,8 +54,8 @@ public class questManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        extraDialogue.enabled = false;
-
+        extraDialogueTitus.enabled = false;
+        extraDialogueCelia.enabled = false;
 
         dictionaryQuests.Add(1, new questData { questID = quest1ID, questTitle = quest1Title, questDesc = quest1Desc, questCompleted = false });
         dictionaryQuests.Add(2, new questData { questID = quest2ID, questTitle = quest2Title, questDesc = quest2Desc, questCompleted = false });
@@ -104,7 +102,8 @@ public class questManager : MonoBehaviour
             case 1:
                     updateQuestHUD(id);
                     assignQuestLog(id);                          
-                extraDialogue.enabled = true;              
+                extraDialogueTitus.enabled = true;
+                extraDialogueCelia.enabled = true;
                 break;
             case 2:
                    updateQuestHUD(id);

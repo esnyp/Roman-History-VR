@@ -20,17 +20,17 @@ public class npcDialogueManagement : MonoBehaviour
     private String speechHowsLifeMarcus = "Life for peasants in Rome was extremely difficult." + // Marcus
         " Most of us worked as farmers, caring for crops and livestock." +
         " We also had to pay many taxes and provide free labor for construction projects.";
-
-    private String speechQuest = "In Rome we use Roman numerals such as IV to represent the value 4 and XII to " +
-        "represent the value seven. I was trying to setup my market stand but accidently purchased these Arabic numerals! Can you" +
-        "help me convert them?";
     private String speechGreetingTitus = "Hail, I am Titus";
     private String speechKeyTitus = "(QUEST) I'm stuck out here because I lost the key to my home! Can you help me find it?";
     private String speechKeyTitusAdd = "(QUEST) I was at the market earlier so I'd start there!";
+    private String speechHomeTitus = "There are four types of homes people generally live in. The Domus for the wealthiest people. The Insulae" +
+        "for merchants and working people. Villas for wealthy people outside the town and farm houses for people living in the countryside.";
     private String speechGreetingCelia = "Hail, I am Celia";
     private String speechConvertCelia = "(QUEST) I purchased these banners for my market stand but they're using arabic numerals! " +
         "Merchants generally use Roman numerals and I don't understsand these arabic ones. Can you help convert these for me?";
-    private String speechTipCelia = "Hmm, I think I remember Titus getting water from the well. Maybe he dropped his key near it?";
+    private String speechTipCelia = "Hmm, I think I remember seeing a key by the well.";
+    private String speechSellCelia = "I usually sell metalwork and tableware but other merchants commonly sell stuff such as clothing, textiles, food, beverages, and pottery";
+    private String speechGreetingLucius = "Hail, I am Lucius";
 
 
     public void dialogueManager(int dialogueID)
@@ -57,8 +57,8 @@ public class npcDialogueManagement : MonoBehaviour
                     NPCtext.text = speechHowsLifeMarcus;
                     break;
                 case 5:
-                    Debug.Log(speechGreetingTitus);
-                    NPCtext.text = speechQuest;
+                    Debug.Log(speechHomeTitus);
+                    NPCtext.text = speechHomeTitus;
                     break;             
                 case 7:
                     Debug.Log(speechGreetingTitus);
@@ -83,6 +83,14 @@ public class npcDialogueManagement : MonoBehaviour
                 case 12:
                     Debug.Log(speechTipCelia);
                     NPCtext.text = speechTipCelia;
+                    break;
+                case 13:
+                    Debug.Log(speechSellCelia);
+                    NPCtext.text = speechSellCelia;
+                    break;
+                case 14:
+                    Debug.Log(speechGreetingLucius);
+                    NPCtext.text = speechGreetingLucius;
                     break;
 
 

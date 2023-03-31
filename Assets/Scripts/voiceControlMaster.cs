@@ -23,9 +23,11 @@ public class voiceControlMaster : MonoBehaviour
     public GameObject marcusNPC;
     public GameObject titusNPC;
     public GameObject celiaNPC;
+    public GameObject luciusNPC;
     public float distMarcus;
     public float distTitus;
     public float distCelia;
+    public float distLucius;
 
     private void Start()
     {
@@ -43,7 +45,7 @@ public class voiceControlMaster : MonoBehaviour
        distTitus = Vector3.Distance(player.transform.position, titusNPC.transform.position);
        distCelia = Vector3.Distance(player.transform.position, celiaNPC.transform.position);
 
-        if (distMarcus > 3 && distTitus > 3 && distCelia > 3) //checks if range of any npcs to see if you need to listen for speech
+        if (distMarcus > 3 && distTitus > 3 && distCelia > 3 && distLucius > 3) //checks if range of any npcs to see if you need to listen for speech
         {
             recog.Stop();
         }
@@ -64,8 +66,12 @@ public class voiceControlMaster : MonoBehaviour
         {
             selectedNPC = "celiaSelected";
         }
+        else if (distLucius < 3)
+        {
+            selectedNPC = "luciusSelected";
+        }
 
-        switch (selectedNPC) // resolved which npc the user is close to
+        /*switch (selectedNPC) // resolved which npc the user is close to
         {
             case "marcusSelected":
                Debug.Log("Marcus Selected");
@@ -75,12 +81,15 @@ public class voiceControlMaster : MonoBehaviour
                 Debug.Log("Titus Selected");
                 break;
             case "celiaSelected":
-                Debug.Log("celiaSelected");
+                Debug.Log("Celia Selected");
+                break;
+            case "luciusSelected":
+                Debug.Log("Lucius Selected");
                 break;
             default:
                 Debug.Log("Value is something else");
                 break;
-        }
+        }*/
 
 
         }
@@ -93,6 +102,8 @@ public class voiceControlMaster : MonoBehaviour
         responses.Add("Do you need help converting these", ConvertingQuest);
         responses.Add("Do you need help?", keyQuest);
         responses.Add("Where could it be?", keyQuestAdd);
+        responses.Add("What do you sell", whatDoYouSell);
+        responses.Add("Is this your home?", isThisYourHome);
     }
 
     private void speechRecognised(PhraseRecognizedEventArgs speechDetected)
@@ -117,6 +128,11 @@ public class voiceControlMaster : MonoBehaviour
         {
             npcDialogueManagement npcdialoguemanagementCelia = celiaNPC.GetComponent<npcDialogueManagement>();
             npcdialoguemanagementCelia.dialogueManager(10);
+        }
+        else if (selectedNPC == "luciusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementCelia = luciusNPC.GetComponent<npcDialogueManagement>();
+            npcdialoguemanagementCelia.dialogueManager(14);
         }
 
     }
@@ -182,8 +198,27 @@ public class voiceControlMaster : MonoBehaviour
         {
             npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();
             questManager questMan = questManager.GetComponent<questManager>();
-        
+
             npcdialoguemanagementTitus.dialogueManager(9);
+        }
+    }
+    private void whatDoYouSell()
+    {
+        if (selectedNPC == "celiaSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = celiaNPC.GetComponent<npcDialogueManagement>();
+
+            npcdialoguemanagementTitus.dialogueManager(13);
+        }
+    }
+
+    private void isThisYourHome()
+    {
+        if (selectedNPC == "titusSelected")
+        {
+            npcDialogueManagement npcdialoguemanagementTitus = titusNPC.GetComponent<npcDialogueManagement>();    
+
+            npcdialoguemanagementTitus.dialogueManager(5);
         }
     }
 }

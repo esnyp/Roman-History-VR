@@ -18,7 +18,7 @@ public class notificationController : MonoBehaviour
     
     public void sendNotification(string notificationMessage)
     {                
-        notif.text += notificationMessage;
+        notif.text = notificationMessage;
         StartCoroutine(fadeText());
     }
 

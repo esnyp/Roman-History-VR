@@ -17,7 +17,7 @@ public class numeralGameSuperManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(numeralGameChecker);
+       // Debug.Log(numeralGameChecker);
 
         if(numeralGameChecker == 3 && checker == 0)
         {
