@@ -18,6 +18,6 @@ public class colliderTesting : MonoBehaviour
 
     public void testInteractable()
     {
-        Debug.Log("I'm being detected!");
+        Debug.Log("I'm being detected!" + gameObject.name);
     }
 }
