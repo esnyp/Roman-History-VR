@@ -42,12 +42,13 @@ public class XPBarController : MonoBehaviour
             tarProgress = tarProgress - currentXP; 
             slider.value = 0.0f;
             playerLevel++;
+            xrOrigin.GetComponentInChildren<ActionBasedContinuousMoveProvider>().moveSpeed =
+            (xrOrigin.GetComponentInChildren<ActionBasedContinuousMoveProvider>().moveSpeed) * 1.2f; // player gains 20% movement speed everytime they level up
             slider.maxValue += 50;
         }
     }
     public void ProgressUpdate(float trackProgress)
-    {
-        xrOrigin.GetComponentInChildren<ActionBasedContinuousMoveProvider>().moveSpeed = (xrOrigin.GetComponentInChildren<ActionBasedContinuousMoveProvider>().moveSpeed)*1.2f; // player gains 20% movement speed everytime they level up
+    {       
         tarProgress = slider.value + trackProgress;
         currentXP = trackProgress;
     }
