@@ -36,63 +36,73 @@ public class npcDialogueManagement : MonoBehaviour
     public void dialogueManager(int dialogueID)
     {
         {
-          //  Debug.Log(gameObject.name);
+            //  Debug.Log(gameObject.name);
             switch (dialogueID)
             {
-                case 1:                  
+                case 1:
                     Debug.Log(speechGreetingMarcus);
-                    NPCtext.text = speechGreetingMarcus;                   
+                    NPCtext.text = speechGreetingMarcus;
                     break;
-                    
+
                 case 2:
                     Debug.Log(speechLocationMarcus);
                     NPCtext.text = speechLocationMarcus;
                     break;
+
                 case 3:
                     Debug.Log(speechHelpMarcus);
                     NPCtext.text = speechHelpMarcus;
                     break;
+
                 case 4:
                     Debug.Log(speechHowsLifeMarcus);
                     NPCtext.text = speechHowsLifeMarcus;
                     break;
+
                 case 5:
                     Debug.Log(speechHomeTitus);
                     NPCtext.text = speechHomeTitus;
-                    break;             
+                    break;
+
                 case 7:
                     Debug.Log(speechGreetingTitus);
                     NPCtext.text = speechGreetingTitus;
                     break;
+
                 case 8:
                     Debug.Log(speechKeyTitus);
                     NPCtext.text = speechKeyTitus;
                     break;
+
                 case 9:
                     Debug.Log(speechKeyTitusAdd);
                     NPCtext.text = speechKeyTitusAdd;
                     break;
+
                 case 10:
                     Debug.Log(speechGreetingCelia);
                     NPCtext.text = speechGreetingCelia;
                     break;
+
                 case 11:
                     Debug.Log(speechConvertCelia);
                     NPCtext.text = speechConvertCelia;
                     break;
+
                 case 12:
                     Debug.Log(speechTipCelia);
                     NPCtext.text = speechTipCelia;
                     break;
+
                 case 13:
                     Debug.Log(speechSellCelia);
                     NPCtext.text = speechSellCelia;
                     break;
+
                 case 14:
                     Debug.Log(speechGreetingLucius);
                     NPCtext.text = speechGreetingLucius;
                     break;
-
 
                 default:
                     Debug.Log("Value is something else");

@@ -7,9 +7,8 @@ using UnityEngine.UI;
 public class backButtonSettings : MonoBehaviour
 {
     public Canvas settingsCanvas;
-    public Button settingsButton;
     public Canvas achievementsCanvas;
-    public Button achievementsButton;
+    public Canvas questsCanvas;
     public TMP_Text heading;
     public GameObject buttonsParent;
     // Start is called before the first frame update
@@ -29,6 +28,7 @@ public class backButtonSettings : MonoBehaviour
         heading.text = "";
         settingsCanvas.gameObject.SetActive(false);
         achievementsCanvas.gameObject.SetActive(false);
+        questsCanvas.gameObject.SetActive(false);
         buttonsParent.gameObject.SetActive(true);
         
     }

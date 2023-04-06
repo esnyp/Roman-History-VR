@@ -44,6 +44,7 @@ public class voiceControlMaster : MonoBehaviour
        distMarcus = Vector3.Distance(player.transform.position, marcusNPC.transform.position);
        distTitus = Vector3.Distance(player.transform.position, titusNPC.transform.position);
        distCelia = Vector3.Distance(player.transform.position, celiaNPC.transform.position);
+       distLucius = Vector3.Distance(player.transform.position, luciusNPC.transform.position);
 
         if (distMarcus > 3 && distTitus > 3 && distCelia > 3 && distLucius > 3) //checks if range of any npcs to see if you need to listen for speech
         {
