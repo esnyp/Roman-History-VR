@@ -78,7 +78,7 @@ public class questManager : MonoBehaviour
         public bool questCompleted;
     }
 
-    public void questResolver(int id) // assigns the current quest ID and calls the method to change the quesdt canvas text
+    public void questResolver(int id) // assigns the current quest ID and calls the method to change the quest canvas text
     {
         switch (id) {
             case 1:
@@ -95,7 +95,7 @@ public class questManager : MonoBehaviour
         }  
     }
 
-    public void questAssigner(int id)
+    public void questAssigner(int id) // call methods to update UI elements and enables anything related to the quest
     {
         switch (id)
         {
@@ -153,13 +153,14 @@ public class questManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Quest log full");
+            questTextHUD.text = "Your quest log is full! Go to the quests menu to remove quests!";
         }
     }
 
     public void questCompleter(int id)
     {
-        dictionaryQuests[id] = new questData { questID = id, questTitle = dictionaryQuests[id].questTitle, questDesc = dictionaryQuests[id].questDesc, questCompleted = true };
+        dictionaryQuests[id] = new questData { questID = id, questTitle = dictionaryQuests[id].questTitle,
+            questDesc = dictionaryQuests[id].questDesc, questCompleted = true };
         XP.ProgressUpdate(200.0f);
 
         if (questSlot1ID == id)
